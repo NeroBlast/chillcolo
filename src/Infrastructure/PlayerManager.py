@@ -1,4 +1,6 @@
 
+import random
+
 class PlayerManager:
 
     players = []
@@ -11,6 +13,21 @@ class PlayerManager:
         
     def addPlayer(self,player):
         self.players.add(player)
+
+    def pickPlayers(self,amount):
+        choosen = []
+        players = self.players
+        n = amount
+        while n > 0:
+            player = random.choice(players)
+            players.remove(player)
+            playerOccurence[player] += 1
+            n = n-1
+        return choosen
+
+    #TODO
+    def pickPlayersFairly(self):
+        return 0
 
     def getPlayerOccurence(self):
         return self.playerOccurence
