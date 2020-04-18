@@ -1,8 +1,8 @@
 {
 "id": 2,
 "type": "normal",
-"enonce": "$ juge entre $ et $ & ce dernier boira # gorgées",
+"enonce": "$ choisi entre $ et $ celui qui boira # gorgées",
 "nbj": 3,
-"min": 3,
-"max": 8
+"min": 5,
+"max": 10
 }
