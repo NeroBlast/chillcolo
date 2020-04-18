@@ -1,0 +1,4 @@
+**/*.pyc
+**/*.log
+/Infrastructure/__pycache__/*.pyc
+/tests/__pycache__/*.pyc
