@@ -14,9 +14,9 @@ class RuleGetter():
     MAX_ROUNDS = 25
 
     normalProb = 55
-    roundProb = 0
-    sanctionsProb = 0
-    virusProb = 0
+    roundProb = 50
+    sanctionsProb = 50
+    virusProb = 50
 
     def __init__(self,all_players):
 
@@ -85,13 +85,13 @@ class RuleGetter():
             raw_rule = self.transcoder.getJsonRule(rdm_rule,typee)
             print(rdm_rule)
             print(typee)
-            #print(raw_rule)
+            print(raw_rule)
             nb_players_req = raw_rule["nbj"]
             joueurs = self.manager.pickPlayers(nb_players_req)
             print("player rec = "+ str(nb_players_req))
             print("players = "+ str(len(joueurs)))
             if len(joueurs)>= nb_players_req:
                 break
-        print(raw_rule)
+        #print(raw_rule)
         rule = self.wrapper.stringyfy(raw_rule,joueurs)
         return rule

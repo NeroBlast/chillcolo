@@ -29,6 +29,7 @@ class RuleWrapper:
             data = json.load(json_file)
             nbvariantes = data["nb"]
             variante_rdm = random.randrange(1,nbvariantes+1)
+            print("variante "+ str(variante_rdm))
             variante_text = data[str(variante_rdm)]
             rule = rule.replace('&',variante_text,1)
 
