@@ -14,11 +14,11 @@ class RuleGetter():
     MAX_ROUNDS = 25
 
     normalProb = 55
-    roundProb = 30
-    sanctionsProb = 14
-    virusProb = 5
+    roundProb = 0
+    sanctionsProb = 0
+    virusProb = 0
 
-    def __init__(self,normal,round,sanctions,virus):
+    def __init__(self,all_players):
 
         probTot = self.normalProb + self.roundProb + self.sanctionsProb + self.virusProb
         self.normalProb = (self.normalProb / probTot) * 100
@@ -26,7 +26,8 @@ class RuleGetter():
         self.sanctionsProb = self.roundProb + (self.sanctionsProb /probTot) * 100
         self.virusProb = self.sanctionsProb + (self.virusProb / probTot) * 100
 
-        self.manager = PlayerManager.PlayerManager()
+        self.manager = PlayerManager.PlayerManager(all_players)
+        
         self.wrapper = RuleWrapper.RuleWrapper()
         self.transcoder = JsonTranscoder.JsonTranscoder()
         self.rulesDone = []
@@ -50,21 +51,26 @@ class RuleGetter():
         except:
             print("File containing number of rules not found")
             exit()
+    
+    def get_rule(type,id):
+        joueurs = self.manager.pickPlayers()
+        rule = self.wrapper.stringyfy(raw_rule,joueurs)
+        return rule
 
-
-    def getRandomRule(self,joueurs):
+    def getRandomRule(self):
+        
         rdm_type = random.randrange(0,100)
         typee =""
         idMax = 0
-        if rdm_type < normalProb :
+        if rdm_type < self.normalProb :
             typee = "normal"
             idMax = self.nb_normal
 
-        elif rdm_type < roundProb :
+        elif rdm_type < self.roundProb :
             typee = "round"
             idMax = self.nb_round
 
-        elif rdm_type < sanctionsProb :
+        elif rdm_type < self.sanctionsProb :
             typee = "sanctions"
             idMax = self.nb_sanctions
 
@@ -73,13 +79,19 @@ class RuleGetter():
             idMax = self.nb_virus
 
         while True:
-            rdm_rule = random.randrange(1,101)
-            raw_rule = transcoder.getJsonRule(rdm_rule,typee)
+            print("eeeeeeeeeeee" + str(idMax))
+            rdm_rule = random.randrange(1,idMax)
+            
+            raw_rule = self.transcoder.getJsonRule(rdm_rule,typee)
+            print(rdm_rule)
+            print(typee)
+            #print(raw_rule)
             nb_players_req = raw_rule["nbj"]
-            if len(manager.getPlayers())>= nb_players_req:
+            joueurs = self.manager.pickPlayers(nb_players_req)
+            print("player rec = "+ str(nb_players_req))
+            print("players = "+ str(len(joueurs)))
+            if len(joueurs)>= nb_players_req:
                 break
-
-        players_selected = self.manager.pickPlayers(nb_players_req)
-        
-        rule = wrapper.stringyfy(raw_rule,players_selected)
+        print(raw_rule)
+        rule = self.wrapper.stringyfy(raw_rule,joueurs)
         return rule

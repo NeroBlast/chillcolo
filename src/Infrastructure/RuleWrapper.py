@@ -16,7 +16,11 @@ class RuleWrapper:
             lstPlayer.remove(randomPlayer)
             rule = rule.replace('$', randomPlayer ,1)
         while '#' in rule:
-            gorgees = random.randrange(min,max)
+            gorgees = 0
+            if(min == max):
+                gorgees = min
+            else:
+                gorgees = random.randrange(min,max)
             rule = rule.replace('#', str(gorgees), 1)
 
         variantepath = "Infrastructure/regles/" + typee + "/variantes/"+ str(id)+ ".json"

@@ -7,6 +7,7 @@ class PlayerManager:
     playerOccurence = {}
 
     def __init__(self,allPlayers):
+        
         self.players = allPlayers
         for player in self.players:
             self.playerOccurence[player]=0
@@ -21,7 +22,8 @@ class PlayerManager:
         while n > 0:
             player = random.choice(players)
             players.remove(player)
-            playerOccurence[player] += 1
+            self.playerOccurence[player] += 1
+            choosen.append(player)
             n = n-1
         return choosen
 
