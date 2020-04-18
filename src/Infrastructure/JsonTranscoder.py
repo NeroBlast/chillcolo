@@ -10,8 +10,10 @@ class JsonTranscoder():
         print(cwd)
 
         try:
-            with open("Infrastructure/regles/" + type +"/" + str(id) +".json") as json_file:
-                data = json.load(json_file)
-                print(data)
+            json_file = open("Infrastructure/regles/" + type +"/" + str(id) +".json")
+            data = json.load(json_file)
+            print(data)
+            return data
+            
         except:
             print("rule n°"+ str(id) + " of type :"+ type+"  not found")
