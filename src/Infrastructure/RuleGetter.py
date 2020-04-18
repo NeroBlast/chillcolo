@@ -27,10 +27,10 @@ class RuleGetter():
                     self.nb_sanctions = data["sanctions"]
                 elif rule == "virus":
                     self.nb_virus = data["virus"]    
-            print(self.nb_normal)
-            print(self.nb_round)
-            print(self.nb_sanctions)
-            print(self.nb_virus)
+            # print(self.nb_normal)
+            # print(self.nb_round)
+            # print(self.nb_sanctions)
+            # print(self.nb_virus)
         except:
             print("File containing number of rules not found")
             exit()
