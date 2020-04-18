@@ -1,6 +1,6 @@
 {
 "id": 1,
-"type": "rounds",
+"type": "round",
 "enonce": "$ choisi un thème, celui qui ne trouve pas bois # gorgées. $ commence! ",
 "nbj": 3,
 "min": 4,
