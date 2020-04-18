@@ -13,10 +13,10 @@ class RuleGetter():
 
     MAX_ROUNDS = 25
 
-    normalProb = 55
-    roundProb = 50
-    sanctionsProb = 50
-    virusProb = 50
+    normalProb = 60
+    roundProb = 40
+    sanctionsProb = 20
+    virusProb = 15
 
     def __init__(self,all_players):
 
@@ -34,7 +34,7 @@ class RuleGetter():
         try:
             json_file = open("Infrastructure/regles/rulesnb.json")
             data = json.load(json_file)
-            print(data)
+            #print(data)
             for rule in data:
                 if rule == "normal":
                     self.nb_normal = data["normal"]
@@ -79,17 +79,17 @@ class RuleGetter():
             idMax = self.nb_virus
 
         while True:
-            print("eeeeeeeeeeee" + str(idMax))
+            # print("eeeeeeeeeeee" + str(idMax))
             rdm_rule = random.randrange(1,idMax)
             
             raw_rule = self.transcoder.getJsonRule(rdm_rule,typee)
-            print(rdm_rule)
-            print(typee)
-            print(raw_rule)
+            # print(rdm_rule)
+            # print(typee)
+            # print(raw_rule)
             nb_players_req = raw_rule["nbj"]
             joueurs = self.manager.pickPlayers(nb_players_req)
-            print("player rec = "+ str(nb_players_req))
-            print("players = "+ str(len(joueurs)))
+            # print("player rec = "+ str(nb_players_req))
+            # print("players = "+ str(len(joueurs)))
             if len(joueurs)>= nb_players_req:
                 break
         #print(raw_rule)
