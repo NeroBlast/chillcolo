@@ -8,14 +8,14 @@ class Rule:
         self.id = id
         self.variante = variante
     
-    def getId():
+    def getId(self):
         return self.id
     
-    def getVariante():
+    def getVariante(self):
         return self.variante
 
 
-    def equals(rule):
+    def equals(self,rule):
         if(not(isinstance(rule,Rule))):
             print("Wrong type objects")
             exit()
@@ -30,3 +30,17 @@ def ruleExists(listOfRules,rule):
         if rule.equals(regle):
             return True
     return False
+    
+def ruleOccuredAminAmount(dictRules,regle):
+    min = 99
+    minOfRule = 0
+    for rule in dictRules:
+        if rule.equals(regle):
+            minOfRule = dictRules[rule]
+            if minOfRule>min:
+                return False
+        elif min < dictRules[rule]:
+            min = dictRules[rule]
+    if(min<minOfRule):
+        return False
+    return True
