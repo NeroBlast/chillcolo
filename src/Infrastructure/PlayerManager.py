@@ -17,7 +17,9 @@ class PlayerManager:
 
     def pickPlayers(self,amount):
         choosen = []
-        players = self.players
+        players = self.players[:]
+        # print(str(amount))
+        # print(players)
         n = amount
         while n > 0:
             player = random.choice(players)

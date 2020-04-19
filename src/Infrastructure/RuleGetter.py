@@ -24,6 +24,7 @@ class RuleGetter():
         
 
         self.manager = PlayerManager.PlayerManager(all_players)
+        print(self.manager.getPlayers())
         self.wrapper = RuleWrapper.RuleWrapper()
         self.transcoder = JsonTranscoder.JsonTranscoder()
         self.rulesDone = {}
@@ -79,7 +80,7 @@ class RuleGetter():
         self.virusProb = (self.virusProb / probTot) * 100
 
 
-    def get_rule(type,id):
+    def get_rule(self,type,id):
         joueurs = self.manager.pickPlayers()
         rule = self.wrapper.stringyfy(raw_rule,joueurs)
         return rule
@@ -88,11 +89,11 @@ class RuleGetter():
 
         while True:
             rdm_type = random.randrange(0,100)
-            print(str(rdm_type))
-            print(str(self.normalProb))
-            print(str(self.roundProb))
-            print(str(self.sanctionsProb))
-            print(str(self.virusProb))
+            # print(str(rdm_type))
+            # print(str(self.normalProb))
+            # print(str(self.roundProb))
+            # print(str(self.sanctionsProb))
+            # print(str(self.virusProb))
             typee =""
             idMax = 0
             if rdm_type < self.normalProb :
@@ -112,7 +113,7 @@ class RuleGetter():
                 idMax = self.nb_virus
 
             while True:
-                print("eeeeeeeeeeee" + str(idMax))
+                #print("eeeeeeeeeeee" + str(idMax))
                 rdm_rule = random.randrange(1,idMax + 1)
                 
                 raw_rule = self.transcoder.getJsonRule(rdm_rule,typee)
@@ -120,6 +121,7 @@ class RuleGetter():
                 
                 # print(raw_rule)
                 nb_players_req = raw_rule["nbj"]
+                
                 joueurs = self.manager.pickPlayers(nb_players_req)
                 if len(joueurs)>= nb_players_req:
                     break
@@ -130,8 +132,13 @@ class RuleGetter():
             print("variante : " + str(variante))
             rule = self.wrapper.stringyfy(raw_rule,joueurs,variante)
             curRule = Rule.Rule(typee,rdm_rule,variante)
-
+            #print(self.rulesDone)
+            
             if(Rule.ruleOccuredAminAmount(self.rulesDone,curRule)):
+                if(not(curRule.getValue() in self.rulesDone)):
+                    self.rulesDone[curRule.getValue()]=1
+                else:
+                    self.rulesDone[curRule.getValue()]+=1
                 break
             else:
                 print("Doublon evité")
