@@ -4,6 +4,7 @@ import os
 from Infrastructure import JsonTranscoder
 from Infrastructure import RuleWrapper
 from Infrastructure import PlayerManager
+from Infrastructure import Rule
 
 class RuleGetter():
     nb_normal = 0
@@ -15,8 +16,8 @@ class RuleGetter():
 
     normalProb = 60
     roundProb = 40
-    sanctionsProb = 20
-    virusProb = 15
+    sanctionsProb = 10
+    virusProb = 20
 
     def __init__(self,all_players):
 
@@ -30,7 +31,7 @@ class RuleGetter():
         
         self.wrapper = RuleWrapper.RuleWrapper()
         self.transcoder = JsonTranscoder.JsonTranscoder()
-        self.rulesDone = []
+        self.rulesDone = {}
         try:
             json_file = open("Infrastructure/regles/rulesnb.json")
             data = json.load(json_file)
@@ -83,15 +84,17 @@ class RuleGetter():
             rdm_rule = random.randrange(1,idMax)
             
             raw_rule = self.transcoder.getJsonRule(rdm_rule,typee)
-            # print(rdm_rule)
-            # print(typee)
+            print(typee)
+            print(rdm_rule)
+            
             # print(raw_rule)
             nb_players_req = raw_rule["nbj"]
             joueurs = self.manager.pickPlayers(nb_players_req)
-            # print("player rec = "+ str(nb_players_req))
-            # print("players = "+ str(len(joueurs)))
             if len(joueurs)>= nb_players_req:
                 break
         #print(raw_rule)
-        rule = self.wrapper.stringyfy(raw_rule,joueurs)
+        variante = self.wrapper.getVariante(typee,rdm_rule)
+        rule = self.wrapper.stringyfy(raw_rule,joueurs,variante)
+        curRule = Rule.Rule(typee,rdm_rule,variante)
+        
         return rule

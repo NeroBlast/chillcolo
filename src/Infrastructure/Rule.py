@@ -16,7 +16,7 @@ class Rule:
 
 
     def equals(rule):
-        if(not(isinstance(rule,Rule)):
+        if(not(isinstance(rule,Rule))):
             print("Wrong type objects")
             exit()
         elif(self.id != rule.getId):

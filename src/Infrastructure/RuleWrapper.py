@@ -4,7 +4,7 @@ import os
 
 class RuleWrapper:
 
-    def stringyfy(self,rawrule,lstPlayer):
+    def stringyfy(self,rawrule,lstPlayer,variante):
         min = rawrule["min"]
         max = rawrule["max"]
         id = rawrule["id"]
@@ -26,11 +26,19 @@ class RuleWrapper:
         variantepath = "Infrastructure/regles/" + typee + "/variantes/"+ str(id)+ ".json"
         if os.path.exists(variantepath):
             json_file = open(variantepath)
-            data = json.load(json_file)
-            nbvariantes = data["nb"]
-            variante_rdm = random.randrange(1,nbvariantes+1)
-            print("variante "+ str(variante_rdm))
-            variante_text = data[str(variante_rdm)]
+            data = json.load(json_file)    
+            print("variante "+ str(variante))
+            variante_text = data[str(variante)]
             rule = rule.replace('&',variante_text,1)
 
         return rule
+
+    def getVariante(self,typee,id):
+        variantepath = "Infrastructure/regles/" + typee + "/variantes/"+ str(id)+ ".json"
+        if os.path.exists(variantepath):
+            json_file = open(variantepath)
+            data = json.load(json_file)
+            nbvariantes = data["nb"]
+            variante_rdm = random.randrange(1,nbvariantes+1)
+            return variante_rdm
+        return 0
