@@ -1,0 +1,9 @@
+{
+"id": 16,
+"type": "normal",
+"enonce": "Les célibataires prennent # gorgées, il faut remédier à cette situation",
+"nbj": 1,
+"min": 2,
+"max": 3,
+"nbvar": 0
+}
