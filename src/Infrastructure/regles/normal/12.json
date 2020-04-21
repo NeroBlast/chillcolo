@@ -1,0 +1,9 @@
+{
+"id": 12,
+"type": "normal",
+"enonce": "Les personnes qui ont cru une fois a leur horoscope boivent # gorgées, x2 si c'étais cette semaine",
+"nbj": 1,
+"min": 1,
+"max": 4,
+"nbvar": 0
+}
