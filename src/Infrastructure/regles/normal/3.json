@@ -4,5 +4,6 @@
 "enonce": "$ bois # gorgées",
 "nbj": 1,
 "min": 3,
-"max": 8
+"max": 8,
+"nbvar": 0
 }
