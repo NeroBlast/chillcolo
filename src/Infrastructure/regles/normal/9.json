@@ -4,5 +4,6 @@
 "enonce": "Casino ! $ bois # gorgées ,$ bois # gorgées ,$ bois # gorgées ,$ bois # gorgées et $ bois # gorgées ",
 "nbj": 5,
 "min": 1,
-"max": 12
+"max": 12,
+"nbvar": 0
 }
