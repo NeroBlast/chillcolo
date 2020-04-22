@@ -4,5 +4,6 @@
 "enonce": "$ distribue # gorgées, bien joué à toi!",
 "nbj": 3,
 "min": 2,
-"max": 8
+"max": 8,
+"nbvar": 0
 }
