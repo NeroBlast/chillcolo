@@ -4,5 +4,6 @@
 "enonce": "$ choisi un thème, celui qui ne trouve pas bois # gorgées. $ commence! ",
 "nbj": 3,
 "min": 4,
-"max": 8
+"max": 8,
+"nbvar": 0
 }
