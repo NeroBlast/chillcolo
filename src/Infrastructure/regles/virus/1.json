@@ -4,5 +4,6 @@
 "enonce": "$ a le devoir de choisir son parrain qui l'accompagnera dans les méandres de l'alcoolisme! ( c'est à sens unique, pas de chance parrain )",
 "nbj": 2,
 "min": 4,
-"max": 10
+"max": 10,
+"nbvar": 0
 }
