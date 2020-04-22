@@ -79,12 +79,12 @@ class RuleGetter():
         self.sanctionsProb =  (self.sanctionsProb /probTot) * 100
         self.virusProb = (self.virusProb / probTot) * 100
 
+    def addPlayer(self,player):
+        self.manager.addPlayer(player)
 
-    def get_rule(self,type,id):
-        joueurs = self.manager.pickPlayers()
-        rule = self.wrapper.stringyfy(raw_rule,joueurs)
-        return rule
-
+    def getPlayers(self):
+        return self.manager.getPlayers()
+        
     def getRandomRule(self):
 
         while True:

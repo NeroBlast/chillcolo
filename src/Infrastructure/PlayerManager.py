@@ -13,18 +13,18 @@ class PlayerManager:
             self.playerOccurence[player]=0
         
     def addPlayer(self,player):
-        self.players.add(player)
+        self.players.append(player)
 
     def pickPlayers(self,amount):
         choosen = []
         players = self.players[:]
         # print(str(amount))
-        # print(players)
+        print(players)
         n = amount
         while n > 0:
             player = random.choice(players)
             players.remove(player)
-            self.playerOccurence[player] += 1
+            #self.playerOccurence[player] += 1
             choosen.append(player)
             n = n-1
         return choosen
