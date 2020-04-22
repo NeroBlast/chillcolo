@@ -4,5 +4,6 @@
 "enonce": "$ choisi entre $ et $ celui qui boira # gorgées",
 "nbj": 3,
 "min": 5,
-"max": 10
+"max": 10,
+"nbvar": 0
 }
