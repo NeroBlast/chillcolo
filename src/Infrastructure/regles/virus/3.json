@@ -1,0 +1,9 @@
+{
+"id": 3,
+"type": "normal",
+"enonce": "$ deviens le roi des question ! répondez à une de ses question vous buvez 2, si vous repondez à sa question par 'ta gueule' il bois 2.",
+"nbj": 2,
+"min": 1,
+"max": 4,
+"nbvar": 0
+}
