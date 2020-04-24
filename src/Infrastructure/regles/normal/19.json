@@ -1,0 +1,9 @@
+{
+"id": 19,
+"type": "normal",
+"enonce": "Bois # gorgées si tu bois de l’alcool que tu n'a pas payé",
+"nbj": 1,
+"min": 2,
+"max": 5,
+"nbvar": 0
+}
