@@ -1,0 +1,9 @@
+{
+"id": 20,
+"type": "normal",
+"enonce": "$ gagne une immunité ! Il l'utilise quand il veux et sera immunisé de tout à son activation ( gorgées, cul sec, gage etc ... )",
+"nbj": 1,
+"min": 1,
+"max": 4,
+"nbvar": 0
+}
